@@ -1,0 +1,54 @@
+from base import *
+
+import os
+DJANGO_DIR = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+BASE_DIR = os.path.abspath(os.path.dirname(DJANGO_DIR))
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '$db_name',  # Or path to database file if using sqlite3.
+        # The following settings are not used with sqlite3:
+        'USER': '$db_user',
+        'PASSWORD': '$db_passwd',
+        'HOST': 'localhost',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '5432',  # Set to empty string for default.
+    }
+}
+
+
+WSGI_APPLICATION = '${project_name}.wsgi.application'
+
+########## MANAGER CONFIGURATION
+#developers are requested to copy below settings in their own settings and modified as required.
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
+ADMINS = $admins
+
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
+MANAGERS = $managers
+########## END MANAGER CONFIGURATION
+
+ALLOWED_HOSTS = $allowed_hosts
+
+# EMAIL Server config
+EMAIL_HOST = '$email_host'
+EMAIL_PORT = '$email_port'
+EMAIL_HOST_USER = '$email_host_user'
+EMAIL_HOST_PASSWORD = '$email_host_passwd'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = '$email_default_from_email'
+
+
+DEBUG_TOOLBAR_PATCH_SETTINGS = False #this needs to be kept false when running with wsgi
+
+
+DEBUG=False
+
+
+STATIC_URL = '$static_url'
+STATIC_ROOT = '$static_root'
+
+MEDIA_ROOT = '$media_root'
+MEDIA_URL = '$media_url'
+
